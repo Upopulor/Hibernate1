@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="cn.wyc.relateOneToOne">
+	<class name="Company" table="t_Company">
+		<id name="id" column="id">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name" type="string"></property>
+		<!-- one to one 默认使用主键同步完成表关系 
+			property-ref:指定company在一对一关联时指向哪个属性
+		-->
+		<one-to-one name="address" class="Address" ></one-to-one>
+	</class>
+</hibernate-mapping>

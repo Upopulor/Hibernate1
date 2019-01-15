@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.wyc.relate.Customer" table="r_customer">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name" type="string"></property>
+		<!-- 表达一对多关系的集合 
+			name:
+			inverse 是否将关系的维护反转给另外一方，默认false
+		-->
+		<set name="orders" inverse="false" lazy="true">
+			<!-- key 用来描述外键  column 描述外键的值 -->
+			<key column="HHid"></key>
+			<!-- one to many表达Customer与Order的关系是一对多 -->
+			<one-to-many class="cn.wyc.relate.Order" />
+		</set>
+	</class>
+</hibernate-mapping>

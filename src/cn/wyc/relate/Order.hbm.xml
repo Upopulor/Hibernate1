@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="cn.wyc.relate.Order" table="r_order" >
+		<id name="oid" column="oid">
+			<generator class="native"></generator>
+		</id>
+		<property name="name" column="name" type="string" ></property>
+		<!-- 表达多对一关系的集合 
+			name:引用属性的名字
+			column:外键的列名
+			class:引用的Order的完整类名
+		-->
+		<many-to-one name="customer" column="HHid" class="cn.wyc.relate.Customer"/>
+	</class>
+</hibernate-mapping>
